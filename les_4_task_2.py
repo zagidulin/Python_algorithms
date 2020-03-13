@@ -40,10 +40,6 @@ def primes(n):
         return prime_list[0]
     k = 2
     while len(prime_list) < n:
-        #if len(prime_list) < 1:
-            #prime_list.append(2)
-            #k += 1
-            #continue
         for j in prime_list:
             if k % j == 0:
                 break
