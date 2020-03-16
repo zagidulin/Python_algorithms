@@ -1,0 +1,39 @@
+# Пользователь вводит данные о количестве предприятий, их наименования и прибыль за 4 квартала (т.е. 4 числа)
+# для каждого предприятия. Программа должна определить среднюю прибыль (за год для всех предприятий) и отдельно
+# вывести наименования предприятий, чья прибыль выше среднего и ниже среднего.
+
+from collections import defaultdict
+
+num = int(input('Укажите количество предприятий: '))
+
+firm_list = []
+i = 0
+while i < num:
+    name = input(f'Наименование {i + 1}-го предприятия: ')
+    for j in range(4):
+        profit = int(input(f'Укажите прибыль {name} в {j + 1}-м квартале: '))
+        k = name, profit
+        firm_list.append(k)
+    i += 1
+
+z = defaultdict(list)
+for f, p in firm_list:
+    z[f].append(p)
+# print(z)
+
+overall = 0
+for i in z:
+    overall += sum(z[i])
+
+avrg = overall / len(z)
+print('Средняя прибыль:', avrg)
+
+print('Предпрития с прибылью выше средней:', ', '.join([i for i in z if sum(z[i]) >= avrg]))
+print('Предпрития с прибылью ниже средней:', ', '.join([i for i in z if sum(z[i]) < avrg]))
+
+
+
+
+
+
+
